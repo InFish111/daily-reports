@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI眼镜市场研究报告 - 2026年5月</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&family=Noto+Serif+SC:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff2442;
+            --primary-light: #ff4d6a;
+            --bg: #fafafa;
+            --card-bg: #ffffff;
+            --text: #333333;
+            --text-secondary: #666666;
+            --text-muted: #999999;
+            --border: #f0f0f0;
+            --code-bg: #f5f5f5;
+            --success: #52c41a;
+            --warning: #faad14;
+            --info: #1890ff;
+            --gradient-1: #667eea;
+            --gradient-2: #764ba2;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            background-image: 
+                radial-gradient(circle at 0% 0%, rgba(102, 126, 234, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(118, 75, 162, 0.05) 0%, transparent 50%);
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 60px 0 40px;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, var(--text) 0%, var(--gradient-1) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.2rem;
+            margin-bottom: 24px;
+        }
+
+        .meta {
+            display: flex;
+            justify-content: center;
+            gap: 32px;
+            flex-wrap: wrap;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .meta-value {
+            font-weight: 700;
+            color: var(--gradient-1);
+            font-size: 1.3rem;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 48px;
+        }
+
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 3px solid;
+            border-image: linear-gradient(90deg, var(--gradient-1), var(--gradient-2)) 1;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-icon {
+            font-size: 1.8rem;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .brand-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brand-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+        }
+
+        .brand-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--gradient-1), var(--gradient-2));
+        }
+
+        .brand-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 16px;
+        }
+
+        .brand-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .brand-tag {
+            display: inline-block;
+            padding: 4px 12px;
+            background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
+            color: white;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .brand-tag.hot {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+        }
+
+        .brand-tag.new {
+            background: linear-gradient(135deg, #4ecdc4, #44a08d);
+        }
+
+        .price-tag {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--gradient-1);
+            margin: 12px 0;
+        }
+
+        .price-range {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .features-list {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0 0;
+        }
+
+        .features-list li {
+            padding: 8px 0;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+
+        .features-list li::before {
+            content: '✓';
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--card-bg);
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
+            color: white;
+            padding: 16px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .comparison-table td {
+            padding: 16px;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-secondary);
+        }
+
+        .comparison-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .comparison-table tr:hover {
+            background: rgba(102, 126, 234, 0.03);
+        }
+
+        /* Feature Cards */
+        .feature-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .feature-item {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            text-align: center;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+
+        .feature-title {
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 8px;
+        }
+
+        .feature-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        /* Trend Box */
+        .trend-box {
+            background: linear-gradient(135deg, #667eea15, #764ba215);
+            border-radius: 16px;
+            padding: 32px;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            position: relative;
+        }
+
+        .trend-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: 16px;
+            padding: 2px;
+            background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+        .trend-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--gradient-1);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .trend-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .trend-list li {
+            padding: 12px 0;
+            border-bottom: 1px dashed var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .trend-list li:last-child {
+            border-bottom: none;
+        }
+
+        .trend-num {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, var(--gradient-1), var(--gradient-2));
+            color: white;
+            border-radius: 50%;
+            font-size: 0.85rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        /* Pros Cons */
+        .pros-cons {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .pros-box, .cons-box {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+        }
+
+        .pros-box {
+            border-left: 4px solid var(--success);
+        }
+
+        .cons-box {
+            border-left: 4px solid #ff4d4f;
+        }
+
+        .pros-box h3 {
+            color: var(--success);
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cons-box h3 {
+            color: #ff4d4f;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            margin-top: 60px;
+            border-top: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+
+        .data-source {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--card-bg);
+            padding: 12px 24px;
+            border-radius: 24px;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .meta {
+                gap: 16px;
+            }
+            
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+            
+            .comparison-table th,
+            .comparison-table td {
+                padding: 12px;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .brand-card, .feature-item {
+            animation: fadeInUp 0.6s ease forwards;
+            opacity: 0;
+        }
+
+        .brand-card:nth-child(1) { animation-delay: 0.1s; }
+        .brand-card:nth-child(2) { animation-delay: 0.2s; }
+        .brand-card:nth-child(3) { animation-delay: 0.3s; }
+        .brand-card:nth-child(4) { animation-delay: 0.4s; }
+        .brand-card:nth-child(5) { animation-delay: 0.5s; }
+        .brand-card:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="badge">📊 市场调研报告</div>
+            <h1>AI眼镜市场研究报告</h1>
+            <p class="subtitle">基于小红书热门笔记整理 · 品牌 · 价格 · 功能全解析</p>
+            <div class="meta">
+                <div class="meta-item">
+                    <span>调研品牌</span>
+                    <span class="meta-value">8+</span>
+                </div>
+                <div class="meta-item">
+                    <span>价格区间</span>
+                    <span class="meta-value">¥699-¥3999</span>
+                </div>
+                <div class="meta-item">
+                    <span>数据时间</span>
+                    <span class="meta-value">2026.05</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- 主要品牌 -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="section-icon">🏢</span>
+                主流品牌概览
+            </h2>
+            <div class="cards-grid">
+                <div class="brand-card">
+                    <div class="brand-header">
+                        <div class="brand-name">ROKID</div>
+                        <span class="brand-tag hot">热门</span>
+                    </div>
+                    <div class="price-tag">¥2499-¥2999</div>
+                    <div class="price-range">中高端定位</div>
+                    <ul class="features-list">
+                        <li>智能体商店生态</li>
+                        <li>AR + AI 双模</li>
+                        <li>提词器功能</li>
+                        <li>实时翻译</li>
+                        <li>语音交互</li>
+                    </ul>
+                </div>
+
+                <div class="brand-card">
+                    <div class="brand-header">
+                        <div class="brand-name">小米 AI眼镜</div>
+                        <span class="brand-tag">性价比</span>
+                    </div>
+                    <div class="price-tag">¥999-¥1499</div>
+                    <div class="price-range">入门级首选</div>
+                    <ul class="features-list">
+                        <li>米家生态联动</li>
+                        <li>拍照/录像</li>
+                        <li>语音助手</li>
+                        <li>通知提醒</li>
+                        <li>轻量化设计</li>
+                    </ul>
+                </div>
+
+                <div class="brand-card">
+                    <div class="brand-header">
+                        <div class="brand-name">Meta Ray-Ban</div>
+                        <span class="brand-tag hot">国际</span>
+                    </div>
+                    <div class="price-tag">¥299-¥329</div>
+                    <div class="price-range">美元定价 (~¥2100-¥2300)</div>
+                    <ul class="features-list">
+                        <li>Meta AI 集成</li>
+                        <li>第一人称拍摄</li>
+                        <li>音乐播放</li>
+                        <li>社交分享</li>
+                        <li>时尚外观</li>
+                    </ul>
+                </div>
+
+                <div class="brand-card">
+                    <div class="brand-header">
+                        <div class="brand-name">界环 AI眼镜</div>
+                        <span class="brand-tag new">新锐</span>
+                    </div>
+                    <div class="price-tag">¥699-¥999</div>
+                    <div class="price-range">入门价位</div>
+                    <ul class="features-list">
+                        <li>AI语音助手</li>
+                        <li>音乐播放</li>
+                        <li>通话功能</li>
+                        <li>开放音频</li>
+                        <li>超长续航</li>
+                    </ul>
+                </div>
+
+                <div class="brand-card">
+                    <div class="brand-header">
+                        <div class="brand-name">乐奇 AI眼镜</div>
+                        <span class="brand-tag">学生党</span>
+                    </div>
+                    <div class="price-tag">¥899-¥1299</div>
+                    <div class="price-range">教育场景</div>
+                    <ul class="features-list">
+                        <li>考试辅助（争议）</li>
+                        <li>拍照搜题</li>
+                        <li>实时翻译</li>
+                        <li>听力辅助</li>
+                        <li>录音功能</li>
+                    </ul>
+                </div>
+
+                <div class="brand-card">
+                    <div class="brand-header">
+                        <div class="brand-name">逸文智能眼镜</div>
+                        <span class="brand-tag">国产</span>
+                    </div>
+                    <div class="price-tag">¥1299-¥1999</div>
+                    <div class="price-range">中端产品</div>
+                    <ul class="features-list">
+                        <li>AR显示</li>
+                        <li>导航功能</li>
+                        <li>消息提醒</li>
+                        <li>漏光控制</li>
+                        <li>可配近视镜片</li>
+                    </ul>
+                </div>
+
+                <div class="brand-card">
+                    <div class="brand-header">
+                        <div class="brand-name">Apple Glasses</div>
+                        <span class="brand-tag new">待发布</span>
+                    </div>
+                    <div class="price-tag">预计 ¥3999+</div>
+                    <div class="price-range">高端定位</div>
+                    <ul class="features-list">
+                        <li>苹果生态深度整合</li>
+                        <li>空间计算</li>
+                        <li>Siri AI</li>
+                        <li>手势控制</li>
+                        <li>MicroLED显示</li>
+                    </ul>
+                </div>
+
+                <div class="brand-card">
+                    <div class="brand-header">
+                        <div class="brand-name">华强北方案</div>
+                        <span class="brand-tag">白牌</span>
+                    </div>
+                    <div class="price-tag">¥299-¥599</div>
+                    <div class="price-range">超低价</div>
+                    <ul class="features-list">
+                        <li>基础音频</li>
+                        <li>简单拍照</li>
+                        <li>蓝牙连接</li>
+                        <li>兼容性强</li>
+                        <li>品质参差</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 功能对比 -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="section-icon">⚖️</span>
+                核心功能对比
+            </h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>品牌</th>
+                        <th>AI助手</th>
+                        <th>拍照/录像</th>
+                        <th>AR显示</th>
+                        <th>翻译</th>
+                        <th>导航</th>
+                        <th>生态</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>ROKID</strong></td>
+                        <td>✅ 强</td>
+                        <td>✅ 支持</td>
+                        <td>✅ 支持</td>
+                        <td>✅ 实时</td>
+                        <td>✅ 支持</td>
+                        <td>开放平台</td>
+                    </tr>
+                    <tr>
+                        <td><strong>小米</strong></td>
+                        <td>✅ 小爱</td>
+                        <td>✅ 支持</td>
+                        <td>❌ 无</td>
+                        <td>✅ 基础</td>
+                        <td>⚠️ 简单</td>
+                        <td>米家</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Meta</strong></td>
+                        <td>✅ Meta AI</td>
+                        <td>✅ 优秀</td>
+                        <td>❌ 无</td>
+                        <td>✅ 支持</td>
+                        <td>⚠️ 基础</td>
+                        <td>Meta生态</td>
+                    </tr>
+                    <tr>
+                        <td><strong>界环</strong></td>
+                        <td>✅ 基础</td>
+                        <td>❌ 无</td>
+                        <td>❌ 无</td>
+                        <td>⚠️ 简单</td>
+                        <td>❌ 无</td>
+                        <td>独立</td>
+                    </tr>
+                    <tr>
+                        <td><strong>乐奇</strong></td>
+                        <td>✅ 支持</td>
+                        <td>✅ 支持</td>
+                        <td>❌ 无</td>
+                        <td>✅ 支持</td>
+                        <td>⚠️ 简单</td>
+                        <td>教育向</td>
+                    </tr>
+                    <tr>
+                        <td><strong>逸文</strong></td>
+                        <td>⚠️ 基础</td>
+                        <td>✅ 支持</td>
+                        <td>✅ 单色</td>
+                        <td>⚠️ 简单</td>
+                        <td>✅ 支持</td>
+                        <td>独立</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 核心功能 -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="section-icon">🚀</span>
+                热门功能场景
+            </h2>
+            <div class="feature-cards">
+                <div class="feature-item">
+                    <div class="feature-icon">📷</div>
+                    <div class="feature-title">第一人称拍摄</div>
+                    <div class="feature-desc">解放双手，记录生活瞬间</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🎤</div>
+                    <div class="feature-title">AI语音助手</div>
+                    <div class="feature-desc">语音交互，智能问答</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">📝</div>
+                    <div class="feature-title">实时提词器</div>
+                    <div class="feature-desc">演讲、直播辅助神器</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🌐</div>
+                    <div class="feature-title">实时翻译</div>
+                    <div class="feature-desc">出国旅游、商务沟通</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🗺️</div>
+                    <div class="feature-title">AR导航</div>
+                    <div class="feature-desc">骑行/步行导航更直观</div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🔍</div>
+                    <div class="feature-title">拍照识物</div>
+                    <div class="feature-desc">所见即所得，智能识别</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 市场趋势 -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="section-icon">📈</span>
+                市场趋势洞察
+            </h2>
+            <div class="trend-box">
+                <div class="trend-title">🔥 2026年AI眼镜市场五大趋势</div>
+                <ul class="trend-list">
+                    <li>
+                        <span class="trend-num">1</span>
+                        <div>
+                            <strong>价格下探</strong>
+                            <p style="color: var(--text-muted); margin-top: 4px;">从早期的3000+降至千元以内，入门级产品大量涌现</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="trend-num">2</span>
+                        <div>
+                            <strong>功能聚焦</strong>
+                            <p style="color: var(--text-muted); margin-top: 4px;">从"全能型"转向"场景型」，音频+拍照+AI成为标配</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="trend-num">3</span>
+                        <div>
+                            <strong>生态竞争</strong>
+                            <p style="color: var(--text-muted); margin-top: 4px;">手机大厂入局，AI眼镜成为智能生态新入口</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="trend-num">4</span>
+                        <div>
+                            <strong>教育争议</strong>
+                            <p style="color: var(--text-muted); margin-top: 4px;">考试辅助、拍照搜题功能引发监管关注</p>
+                        </div>
+                    </li>
+                    <li>
+                        <span class="trend-num">5</span>
+                        <div>
+                            <strong>AR升级</strong>
+                            <p style="color: var(--text-muted); margin-top: 4px;">显示技术突破，AR功能从噱头走向实用</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 优缺点 -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="section-icon">💡</span>
+                购买建议
+            </h2>
+            <div class="pros-cons">
+                <div class="pros-box">
+                    <h3>✅ 适合人群</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 8px 0;">• 科技尝鲜者 / 极客玩家</li>
+                        <li style="padding: 8px 0;">• 内容创作者（第一人称拍摄）</li>
+                        <li style="padding: 8px 0;">• 演讲者/主播（提词需求）</li>
+                        <li style="padding: 8px 0;">• 骑行/户外运动爱好者</li>
+                        <li style="padding: 8px 0;">• 外语学习者（翻译需求）</li>
+                    </ul>
+                </div>
+                <div class="cons-box">
+                    <h3>❌ 注意事项</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="padding: 8px 0;">• 隐私争议（拍摄他人）</li>
+                        <li style="padding: 8px 0;">• 续航焦虑（普遍4-8小时）</li>
+                        <li style="padding: 8px 0;">• 佩戴舒适度（重量问题）</li>
+                        <li style="padding: 8px 0;">• 功能实用性待验证</li>
+                        <li style="padding: 8px 0;">• 价格水分大，建议等促销</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 推荐 -->
+        <section class="section">
+            <h2 class="section-title">
+                <span class="section-icon">🎯</span>
+                选购推荐
+            </h2>
+            <div class="cards-grid">
+                <div class="brand-card" style="border: 2px solid var(--success);">
+                    <div class="brand-header">
+                        <div class="brand-name">🥇 入门首选</div>
+                    </div>
+                    <div style="font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 8px;">小米 AI眼镜</div>
+                    <div class="price-tag" style="font-size: 1.4rem;">¥999</div>
+                    <p style="color: var(--text-muted);">性价比最高，生态完善，适合首次尝试</p>
+                </div>
+
+                <div class="brand-card" style="border: 2px solid var(--gradient-1);">
+                    <div class="brand-header">
+                        <div class="brand-name">🥈 功能全面</div>
+                    </div>
+                    <div style="font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 8px;">ROKID Glasses</div>
+                    <div class="price-tag" style="font-size: 1.4rem;">¥2499</div>
+                    <p style="color: var(--text-muted);">AR+AI双模，功能最全面，体验最佳</p>
+                </div>
+
+                <div class="brand-card" style="border: 2px solid #faad14;">
+                    <div class="brand-header">
+                        <div class="brand-name">🥉 时尚选择</div>
+                    </div>
+                    <div style="font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 8px;">Meta Ray-Ban</div>
+                    <div class="price-tag" style="font-size: 1.4rem;">~¥2100</div>
+                    <p style="color: var(--text-muted);">时尚外观，拍摄优秀，社交属性强</p>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="data-source">
+                📊 数据来源：小红书搜索 "AI眼镜"、"AI眼镜测评"、"AI眼镜价格" 等热门笔记
+                <br>
+                <span style="font-size: 0.85rem; color: var(--text-muted);">整理时间：2026年5月25日 | 仅供参考，价格以官方为准</span>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI眼镜：赛博朋克与现实之间</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&family=Noto+Serif+SC:wght@300;400;600;700&family=Noto+Sans+SC:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-warm: #f7f5f2;
+            --bg-paper: #faf9f7;
+            --text-primary: #1a1a1a;
+            --text-secondary: #4a4a4a;
+            --text-muted: #8a8a8a;
+            --accent-stone: #a8a29e;
+            --accent-warm: #d4c4b0;
+            --accent-deep: #292524;
+            --border-light: #e7e5e4;
+            --border-warm: #d6d3d1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans SC', 'Inter', -apple-system, sans-serif;
+            background: var(--bg-warm);
+            color: var(--text-primary);
+            line-height: 1.9;
+            font-weight: 300;
+            letter-spacing: 0.02em;
+        }
+
+        /* Editorial Layout */
+        .editorial {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Hero Section - Full bleed */
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 80px 40px;
+            position: relative;
+            background: linear-gradient(180deg, var(--bg-warm) 0%, var(--bg-paper) 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--border-warm);
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 1px;
+            background: var(--text-muted);
+        }
+
+        .kicker {
+            font-family: 'Cormorant Garamond', 'Noto Serif SC', serif;
+            font-size: 0.85rem;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-weight: 400;
+        }
+
+        .hero-title {
+            font-family: 'Noto Serif SC', 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 32px;
+            color: var(--text-primary);
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 500px;
+            line-height: 1.8;
+            font-weight: 300;
+        }
+
+        .hero-meta {
+            margin-top: 60px;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* Lead Paragraph */
+        .lead-section {
+            padding: 100px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .lead {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.35rem;
+            line-height: 2;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        .lead::first-letter {
+            font-size: 4rem;
+            float: left;
+            line-height: 0.8;
+            margin-right: 12px;
+            margin-top: 8px;
+            color: var(--text-primary);
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 100px 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .section:last-of-type {
+            border-bottom: none;
+        }
+
+        .section-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 0.75rem;
+            letter-spacing: 0.2em;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif SC', 'Cormorant Garamond', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            font-weight: 400;
+            margin-bottom: 60px;
+            color: var(--text-primary);
+            line-height: 1.3;
+        }
+
+        /* Typography */
+        h3 {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin: 48px 0 24px;
+            color: var(--text-primary);
+        }
+
+        p {
+            margin-bottom: 24px;
+            color: var(--text-secondary);
+        }
+
+        /* Pull Quote */
+        .pull-quote {
+            margin: 80px 0;
+            padding: 40px 0;
+            border-top: 1px solid var(--border-warm);
+            border-bottom: 1px solid var(--border-warm);
+            text-align: center;
+        }
+
+        .pull-quote-text {
+            font-family: 'Noto Serif SC', 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--text-primary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Brand List - Minimal */
+        .brand-list {
+            margin: 60px 0;
+        }
+
+        .brand-item {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 40px;
+            padding: 32px 0;
+            border-bottom: 1px solid var(--border-light);
+            align-items: baseline;
+        }
+
+        .brand-item:first-child {
+            border-top: 1px solid var(--border-light);
+        }
+
+        .brand-name {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .brand-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 300;
+        }
+
+        .brand-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            color: var(--text-primary);
+            font-weight: 400;
+            text-align: right;
+        }
+
+        .brand-tag {
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-top: 4px;
+            display: block;
+        }
+
+        /* Data Points */
+        .data-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            margin: 60px 0;
+            padding: 60px 0;
+            border-top: 1px solid var(--border-warm);
+            border-bottom: 1px solid var(--border-warm);
+        }
+
+        .data-item {
+            text-align: center;
+        }
+
+        .data-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            color: var(--text-primary);
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .data-label {
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        /* Feature List - Elegant */
+        .feature-list {
+            margin: 48px 0;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .feature-list li {
+            position: relative;
+            padding-left: 24px;
+            margin-bottom: 16px;
+            color: var(--text-secondary);
+        }
+
+        .feature-list li::before {
+            content: '—';
+            position: absolute;
+            left: 0;
+            color: var(--accent-stone);
+        }
+
+        /* Comparison Table - Minimal */
+        .comparison {
+            margin: 60px 0;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        th {
+            text-align: left;
+            padding: 16px 12px;
+            border-bottom: 2px solid var(--text-primary);
+            font-weight: 500;
+            font-size: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+        }
+
+        td {
+            padding: 20px 12px;
+            border-bottom: 1px solid var(--border-light);
+            color: var(--text-secondary);
+        }
+
+        tr:hover td {
+            background: rgba(0,0,0,0.01);
+        }
+
+        /* Recommendation Box */
+        .recommendation {
+            background: var(--bg-paper);
+            padding: 48px;
+            margin: 60px 0;
+            border-left: 3px solid var(--text-primary);
+        }
+
+        .rec-title {
+            font-family: 'Noto Serif SC', serif;
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 16px;
+            color: var(--text-primary);
+        }
+
+        .rec-brand {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .rec-price {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .rec-desc {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            padding: 80px 0;
+            text-align: center;
+            border-top: 1px solid var(--border-warm);
+            margin-top: 80px;
+        }
+
+        .footer-text {
+            font-size: 0.8rem;
+            letter-spacing: 0.1em;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .editorial {
+                padding: 0 24px;
+            }
+
+            .hero {
+                min-height: 70vh;
+                padding: 60px 24px;
+            }
+
+            .section {
+                padding: 60px 0;
+            }
+
+            .data-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .brand-item {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .brand-price {
+                text-align: left;
+            }
+
+            .recommendation {
+                padding: 32px 24px;
+            }
+        }
+
+        /* Subtle Animations */
+        .hero-title, .section-title {
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero-title {
+            animation-delay: 0.2s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="hero">
+        <div class="kicker">Market Research</div>
+        <h1 class="hero-title">AI眼镜<br>赛博朋克与现实之间</h1>
+        <p class="hero-subtitle">当科幻电影中的智能眼镜走进日常生活，我们离真正的"增强现实"还有多远？</p>
+        <div class="hero-meta">May 2026 · 市场调研</div>
+    </header>
+
+    <main class="editorial">
+        <!-- Lead -->
+        <section class="lead-section">
+            <p class="lead">
+                2026年，AI眼镜市场迎来了前所未有的爆发。从Meta与Ray-Ban的联名款，到小米、ROKID等国内厂商的密集入局，这个曾经只存在于科幻作品中的品类，正在以惊人的速度渗透进普通消费者的生活。价格从299元到3999元不等，功能从简单的音频播放到复杂的AR显示，AI眼镜正在经历从"极客玩具"到"大众消费品"的关键转型期。
+            </p>
+        </section>
+
+        <!-- Section 1: Market Overview -->
+        <section class="section">
+            <span class="section-number">01</span>
+            <h2 class="section-title">市场格局</h2>
+            
+            <div class="data-grid">
+                <div class="data-item">
+                    <div class="data-number">8+</div>
+                    <div class="data-label">主流品牌</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-number">¥299</div>
+                    <div class="data-label">入门价位</div>
+                </div>
+                <div class="data-item">
+                    <div class="data-number">¥3999</div>
+                    <div class="data-label">高端定位</div>
+                </div>
+            </div>
+
+            <p>当前市场上的AI眼镜可以大致分为三个梯队：以小米、界环为代表的价格亲民型，以Meta Ray-Ban、ROKID为代表的功能均衡型，以及尚未发布但备受期待的Apple Glasses所代表的高端生态型。</p>
+        </section>
+
+        <!-- Section 2: Brand Analysis -->
+        <section class="section">
+            <span class="section-number">02</span>
+            <h2 class="section-title">品牌扫描</h2>
+
+            <div class="brand-list">
+                <div class="brand-item">
+                    <div>
+                        <div class="brand-name">ROKID</div>
+                        <div class="brand-desc">AR+AI双模，智能体商店生态，功能最全面的国产方案</div>
+                    </div>
+                    <div>
+                        <div class="brand-price">¥2,499</div>
+                        <div class="brand-tag">热门推荐</div>
+                    </div>
+                </div>
+
+                <div class="brand-item">
+                    <div>
+                        <div class="brand-name">小米 AI眼镜</div>
+                        <div class="brand-desc">米家生态联动，性价比之选，入门级首选</div>
+                    </div>
+                    <div>
+                        <div class="brand-price">¥999</div>
+                        <div class="brand-tag">性价比</div>
+                    </div>
+                </div>
+
+                <div class="brand-item">
+                    <div>
+                        <div class="brand-name">Meta × Ray-Ban</div>
+                        <div class="brand-desc">时尚外观与科技的结合，社交属性强，拍摄体验优秀</div>
+                    </div>
+                    <div>
+                        <div class="brand-price">~¥2,100</div>
+                        <div class="brand-tag">国际大牌</div>
+                    </div>
+                </div>
+
+                <div class="brand-item">
+                    <div>
+                        <div class="brand-name">界环 AI眼镜</div>
+                        <div class="brand-desc">超长续航，开放式音频，适合日常佩戴</div>
+                    </div>
+                    <div>
+                        <div class="brand-price">¥699</div>
+                        <div class="brand-tag">入门之选</div>
+                    </div>
+                </div>
+
+                <div class="brand-item">
+                    <div>
+                        <div class="brand-name">Apple Glasses</div>
+                        <div class="brand-desc">空间计算，苹果生态深度整合，值得期待</div>
+                    </div>
+                    <div>
+                        <div class="brand-price">¥3,999+</div>
+                        <div class="brand-tag">待发布</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pull-quote">
+                <p class="pull-quote-text">"AI眼镜正在经历从'极客玩具'到'大众消费品'的关键转型期。"</p>
+            </div>
+        </section>
+
+        <!-- Section 3: Features -->
+        <section class="section">
+            <span class="section-number">03</span>
+            <h2 class="section-title">功能地图</h2>
+
+            <p>目前的AI眼镜功能可以归纳为六大场景，每个品牌在不同功能上的取舍，决定了其目标用户群体。</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>品牌</th>
+                        <th>AI助手</th>
+                        <th>拍摄</th>
+                        <th>AR显示</th>
+                        <th>翻译</th>
+                        <th>生态</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ROKID</td>
+                        <td>★★★★★</td>
+                        <td>★★★★☆</td>
+                        <td>★★★★★</td>
+                        <td>★★★★★</td>
+                        <td>开放平台</td>
+                    </tr>
+                    <tr>
+                        <td>小米</td>
+                        <td>★★★★☆</td>
+                        <td>★★★★☆</td>
+                        <td>—</td>
+                        <td>★★★☆☆</td>
+                        <td>米家</td>
+                    </tr>
+                    <tr>
+                        <td>Meta</td>
+                        <td>★★★★★</td>
+                        <td>★★★★★</td>
+                        <td>—</td>
+                        <td>★★★★☆</td>
+                        <td>Meta生态</td>
+                    </tr>
+                    <tr>
+                        <td>界环</td>
+                        <td>★★★☆☆</td>
+                        <td>—</td>
+                        <td>—</td>
+                        <td>★★☆☆☆</td>
+                        <td>独立</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>核心功能场景</h3>
+            <ul class="feature-list">
+                <li><strong>第一人称拍摄</strong> —— 解放双手，记录生活瞬间，是内容创作者的最爱</li>
+                <li><strong>AI语音助手</strong> —— 语音交互、智能问答，让眼镜成为随身智能助理</li>
+                <li><strong>实时提词器</strong> —— 演讲、直播、主持的神器，告别忘词尴尬</li>
+                <li><strong>实时翻译</strong> —— 出国旅游、商务沟通的无障碍利器</li>
+                <li><strong>AR导航</strong> —— 骑行、步行的更直观导航体验</li>
+            </ul>
+        </section>
+
+        <!-- Section 4: Insights -->
+        <section class="section">
+            <span class="section-number">04</span>
+            <h2 class="section-title">趋势洞察</h2>
+
+            <p>通过对小红书等社交平台用户反馈的分析，我们发现了AI眼镜市场的五个关键趋势：</p>
+
+            <h3>价格持续下探</h3>
+            <p>从早期的3000+元价位，如今已有多款产品进入千元以内。界环699元的定价，让AI眼镜真正走进了大众消费区间。</p>
+
+            <h3>功能从"全能"走向"场景"</h3>
+            <p>早期的AI眼镜试图面面俱到，结果往往是样样通样样松。现在的产品开始聚焦特定场景：有的是拍照神器，有的是翻译利器，有的是提词助手。</p>
+
+            <h3>生态之争初现端倪</h3>
+            <p>小米依托米家生态，Meta依托社交生态，ROKID走开放平台路线。未来的竞争，将是生态系统的竞争。</p>
+
+            <h3>教育场景的争议</h3>
+            <p>乐奇等产品的"考试辅助"功能引发了广泛争议。技术中立与使用边界，成为AI眼镜不得不面对的社会议题。</p>
+
+            <h3>AR显示技术突破</h3>
+            <p>从噱头走向实用，AR功能正在经历质变。ROKID等产品的AR显示已经从"能看"进化到"好用"。</p>
+        </section>
+
+        <!-- Section 5: Recommendations -->
+        <section class="section">
+            <span class="section-number">05</span>
+            <h2 class="section-title">选购建议</h2>
+
+            <div class="recommendation">
+                <div class="rec-title">入门首选</div>
+                <div class="rec-brand">小米 AI眼镜</div>
+                <div class="rec-price">¥999</div>
+                <div class="rec-desc">性价比最高，生态完善，适合首次尝试AI眼镜的用户。小爱同学加持，米家设备联动，是目前最成熟的入门级方案。</div>
+            </div>
+
+            <div class="recommendation">
+                <div class="rec-title">功能全面</div>
+                <div class="rec-brand">ROKID Glasses</div>
+                <div class="rec-price">¥2,499</div>
+                <div class="rec-desc">AR+AI双模，功能最全面，体验最佳。如果你追求一步到位，这是目前最值得投资的AI眼镜。</div>
+            </div>
+
+            <div class="recommendation">
+                <div class="rec-title">时尚之选</div>
+                <div class="rec-brand">Meta × Ray-Ban</div>
+                <div class="rec-price">~¥2,100</div>
+                <div class="rec-desc">时尚外观，拍摄优秀，社交属性强。如果你在意颜值和品牌，这是不会出错的选择。</div>
+            </div>
+
+            <p style="margin-top: 48px; color: var(--text-muted); font-size: 0.9rem;">
+                <strong>不适合人群：</strong>对隐私敏感者（拍摄争议）、续航焦虑者（普遍4-8小时）、预算有限且需求不明确者（建议再观望）。
+            </p>
+        </section>
+    </main>
+
+    <footer>
+        <p class="footer-text">数据来源：小红书 · 调研时间：2026年5月 · 仅供学习交流</p>
+    </footer>
+</body>
+</html>
